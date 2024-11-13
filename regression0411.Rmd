@@ -1,0 +1,137 @@
+---
+title: "Regression0411"
+author: "Iris Shen (hs4052)"
+date: '2023-04-11'
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r}
+df<-read.csv('df_test.csv')
+df
+```
+
+```{r}
+colnames(df)[4] <- "year"
+df
+```
+
+```{r}
+library(ggplot2)
+library(tidyr)
+library(sandwich)
+library(lmtest)
+library(zoo)
+```
+
+```{r}
+df$year.f <- factor(df$year)
+df$ind_clu.f <- factor(df$ind_clu)
+```
+
+```{r}
+fit1 <-lm(roe ~ peer+year.f+ind_clu.f, data = df)
+coeftest(fit1, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit2 <-lm(roa ~ peer+year.f+ind_clu.f, data = df)
+coeftest(fit2, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit3 <-lm(cash_to_asset ~ peer+year.f+ind_clu.f, data = df)
+coeftest(fit3, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit4 <-lm(leverage ~ peer+year.f+ind_clu.f, data = df)
+coeftest(fit4, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit5 <-lm(prcc_f~ peer+year.f+ind_clu.f, data = df)
+coeftest(fit5, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit6 <-lm(ann_RET ~ peer+year.f+ind_clu.f, data = df)
+coeftest(fit6, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit7 <-lm(ann_RETX ~ peer+year.f+ind_clu.f, data = df)
+coeftest(fit7, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+
+```{r}
+fit1 <-lm(roe ~ peer+at+year.f+ind_clu.f, data = df)
+coeftest(fit1, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit2 <-lm(roa ~ peer+at+year.f+ind_clu.f, data = df)
+coeftest(fit2, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit3 <-lm(cash_to_asset ~ peer+at+year.f+ind_clu.f, data = df)
+coeftest(fit3, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit4 <-lm(leverage ~ peer+at+year.f+ind_clu.f, data = df)
+coeftest(fit4, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit5 <-lm(prcc_f~ peer+at+year.f+ind_clu.f, data = df)
+coeftest(fit5, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit6 <-lm(ann_RET ~ peer+at+year.f+ind_clu.f, data = df)
+coeftest(fit6, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit7 <-lm(ann_RETX ~ peer+at+year.f+ind_clu.f, data = df)
+coeftest(fit7, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit1 <-lm(roe ~ peer+at+emp+year.f+ind_clu.f, data = df)
+coeftest(fit1, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit2 <-lm(roa ~ peer+at+emp+year.f+ind_clu.f, data = df)
+coeftest(fit2, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit3 <-lm(cash_to_asset ~ peer+at+emp+year.f+ind_clu.f, data = df)
+coeftest(fit3, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit4 <-lm(leverage ~ peer+at+emp+year.f+ind_clu.f, data = df)
+coeftest(fit4, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit5 <-lm(prcc_f~ peer+at+emp+year.f+ind_clu.f, data = df)
+coeftest(fit5, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit6 <-lm(ann_RET ~ peer+at+emp+year.f+ind_clu.f, data = df)
+coeftest(fit6, vcov = vcovCL,cluster = ~ind_clu)
+```
+
+```{r}
+fit7 <-lm(ann_RETX ~ peer+at+emp+year.f+ind_clu.f, data = df)
+coeftest(fit7, vcov = vcovCL,cluster = ~ind_clu)
+```
